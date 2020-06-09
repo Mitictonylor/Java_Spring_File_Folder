@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "folders")
-public class folder {
+public class Folder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,14 +13,17 @@ public class folder {
     @Column
     private String title;
 
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public folder(String title, User user) {
+    public Folder(String title, User user) {
         this.title = title;
         this.user = user;
     }
 
-    public folder() {
+    public Folder() {
     }
 
     public Long getId() {
